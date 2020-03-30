@@ -1,0 +1,61 @@
+<?php
+// @TODO errors field - change JSON to human readable - logic should go in ViewModel
+/** @var $viewModel \UNFI\BizConnectr\ViewModel\QueueItemk\View */
+
+$viewModel = $block->getViewModel();
+$data = $viewModel->getQueueItemData();
+
+?>
+
+<a href="javascript: history.go(-1)"><?php echo __('Back') ?></a>
+
+<table border="1" border-spacing="20">
+    <tr>
+        <td>File Name</td>
+        <td><?= $data->getFileName(); ?></td>
+    </tr>
+    <tr>
+        <td>Message Type</td>
+        <td><?= $data->getReadableMessageType($data->getMessageType()); ?></td>
+    </tr>
+    <tr>
+        <td>Errors</td>
+        <td><?= var_dump(json_decode($data->getErrors())); ?></td>
+    </tr>
+    <tr>
+        <td>Message</td>
+        <td><?= $data->getMessage(); ?></td>
+    </tr>
+    <tr>
+        <td>Magento Order ID</td>
+        <td><?= $data->getOrderIncrementId(); ?></td>
+    </tr>
+    <tr>
+        <td>UNFI Order Number</td>
+        <td><?= $data->getUnfiOrderId(); ?></td>
+    </tr>
+    <tr>
+        <td>Magento Internal ID</td>
+        <td><?= $data->getOrderId(); ?></td>
+    </tr>
+    <tr>
+        <td>Process Attempts</td>
+        <td><?= $data->getProcessAttempts(); ?></td>
+    </tr>
+    <tr>
+        <td>Date Successfully Processed</td>
+        <td><?= $data->getProcessedSuccessfully(); ?></td>
+    </tr>
+    <tr>
+        <td>Date Manually Edited</td>
+        <td><?= $data->getManuallyEdited(); ?></td>
+    </tr>
+    <tr>
+        <td>Date Created</td>
+        <td><?= $data->getCreatedAt(); ?></td>
+    </tr>
+    <tr>
+        <td>Date Updated</td>
+        <td><?= $data->getUpdatedAt(); ?></td>
+    </tr>
+</table>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="unfi_bizconnect">
+        <!-- RETRIEVE FROM SFTP AND GET INTO DATABASE -->
+        <job name="unfi_bizconnect_confirmation_queue" instance="UNFI\BizConnect\Cron\QueueItemSftpConfirmation" method="execute">
+            <config_path>unfi_bizconnect/sftp/confirmation/cron_expr</config_path>
+        </job>
+        <job name="unfi_bizconnect_invoice_queue" instance="UNFI\BizConnect\Cron\QueueItemSftpInvoice" method="execute">
+            <config_path>unfi_bizconnect/sftp/invoice/cron_expr</config_path>
+        </job>
+        <job name="unfi_bizconnect_tracking_queue" instance="UNFI\BizConnect\Cron\QueueItemSftpTracking" method="execute">
+            <config_path>unfi_bizconnect/sftp/tracking/cron_expr</config_path>
+        </job>
+        <!-- PROCESS ITEMS IN DATABASE -->
+        <job name="unfi_bizconnect_process_confirmation" instance="UNFI\BizConnect\Cron\ProcessQueueItemConfirmation" method="execute">
+            <config_path>unfi_bizconnect/queue_process/cron/confirmation</config_path>
+        </job>
+        <job name="unfi_bizconnect_process_invoice" instance="UNFI\BizConnect\Cron\ProcessQueueItemInvoice" method="execute">
+            <config_path>unfi_bizconnect/queue_process/cron/invoice</config_path>
+        </job>
+        <job name="unfi_bizconnect_process_tracking" instance="UNFI\BizConnect\Cron\ProcessQueueItemTracking" method="execute">
+            <config_path>unfi_bizconnect/queue_process/cron/tracking</config_path>
+        </job>
+    </group>
+</config>

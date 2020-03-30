@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">bizconnect_queueitem_form_edit.bizconnect_queueitem_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Queue Item</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <!--<button name="delete" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\DeleteButton"/>
+            <button name="save_and_continue" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\SaveAndContinueButton"/>
+            <button name="reset" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\ResetButton"/>-->
+            <button name="save" class="UNFI\BizConnect\Block\Adminhtml\QueueItem\Edit\SaveButton"/>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>bizconnect_queueitem_form_edit</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>bizconnect_queueitem_form_edit.bizconnect_queueitem_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="bizconnect_queueitem_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <!--<aclResource>UNFI_BizConnect::queueitem_admin</aclResource>-->
+        <settings>
+            <submitUrl path="bizconnect/queueitem/save"/>
+        </settings>
+        <dataProvider class="UNFI\BizConnect\Model\QueueItem\DataProvider" name="bizconnect_queueitem_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>queueitem_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="queueitem_information" sortOrder="10">
+        <settings>
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+            <label translate="true">Queue Item Information</label>
+        </settings>
+        <field name="ready_to_process" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>checkbox</dataType>
+                <label translate="true">Ready to Process</label>
+                <visible>true</visible>
+                <dataScope>ready_to_process</dataScope>
+            </settings>
+        </field>
+        <field name="has_error" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>checkbox</dataType>
+                <label translate="true">Error Processing</label>
+                <visible>true</visible>
+                <dataScope>has_error</dataScope>
+            </settings>
+        </field>
+        <field name="file_name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">File Name</label>
+                <visible>true</visible>
+                <dataScope>file_name</dataScope>
+            </settings>
+        </field>
+        <field name="message_type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Message Type</label>
+                <dataScope>message_type</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="UNFI\BizConnect\Model\QueueItem\Source\MessageType"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="errors" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Error(s)</label>
+                <visible>true</visible>
+                <dataScope>errors</dataScope>
+            </settings>
+        </field>
+        <field name="message" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Message</label>
+                <visible>true</visible>
+                <dataScope>message</dataScope>
+            </settings>
+        </field>
+        <field name="order_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Internal Order ID</label>
+                <visible>true</visible>
+                <dataScope>order_id</dataScope>
+            </settings>
+        </field>
+        <field name="order_increment_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Order</label>
+                <visible>true</visible>
+                <dataScope>order_increment_id</dataScope>
+            </settings>
+        </field>
+        <field name="unfi_order_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">UNFI Order Number</label>
+                <visible>true</visible>
+                <dataScope>unfi_order_id</dataScope>
+            </settings>
+        </field>
+        <field name="process_attempts" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Process Attemps</label>
+                <visible>true</visible>
+                <dataScope>process_attempts</dataScope>
+            </settings>
+        </field>
+        <field name="processed_successfully" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                        <item name="disabled" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Proccessed Successfully On</label>
+                <visible>true</visible>
+                <dataScope>processed_successfully</dataScope>
+            </settings>
+        </field>
+        <field name="manually_edited" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Manually Edited</label>
+                <visible>true</visible>
+                <dataScope>manually_edited</dataScope>
+            </settings>
+        </field>
+        <field name="created_at" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                        <item name="disabled" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Created On</label>
+                <visible>true</visible>
+                <dataScope>created_at</dataScope>
+            </settings>
+        </field>
+        <field name="updated_at" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">queueitem</item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                        <item name="disabled" xsi:type="boolean">1</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Last Updated</label>
+                <visible>true</visible>
+                <dataScope>updated_at</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

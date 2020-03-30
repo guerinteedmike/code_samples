@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <body>
+       <referenceBlock name="page.main.title">
+           <action method="setPageTitle">
+               <argument translate="true" name="title" xsi:type="string">Slider Widgets</argument>
+           </action>
+       </referenceBlock>
+       <referenceContainer name="content">
+           <uiComponent name="slider_slidergroup_listing" />
+           <!--<block class="Magento\Backend\Block\Template"
+                  template="Guerinteed_Slider::slidergroup_index.phtml">
+               <arguments>
+                   <argument name="viewModel" xsi:type="object">Guerinteed\Slider\ViewModel\SliderGroup\TestViewModel</argument>
+               </arguments>
+           </block>-->
+       </referenceContainer>
+   </body>
+</page>

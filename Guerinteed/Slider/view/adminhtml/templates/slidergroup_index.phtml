@@ -1,0 +1,11 @@
+<?php
+use Guerinteed\Slider\Model\SliderGroup;
+
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var Guerinteed\Slider\ViewModel\SliderGroup\TestViewModel $viewModel */
+$viewModel = $block->getData('viewModel');
+$model = $viewModel->getTestRecord();
+?>
+<h2><?= /* @noEscape */ $viewModel->TestMe() ?></h2>
+<p>ID: <?= $model->getId() ?></p>
+<p>Title: <?= $model->gettitle() ?></p>

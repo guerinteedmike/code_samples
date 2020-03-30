@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="UNFI_BizConnect::bizconnect" title="UNFI" translate="title" module="UNFI_BizConnect" sortOrder="10" resource="UNFI_BizConnect::queueitem"/>
+        <add id="UNFI_BizConnect::bizconnect_queueitem" title="UBS Import Queues" translate="title" module="UNFI_BizConnect" sortOrder="10" parent="UNFI_BizConnect::bizconnect" action="bizconnect/queueitem/index" resource="UNFI_BizConnect::queueitem_view"/>
+       </menu>
+</config>

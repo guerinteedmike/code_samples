@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- @TODO update default values -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <unfi_bizconnect>
+            <general>
+                <amount_to_process>10</amount_to_process>
+            </general>
+            <sftp_enabled>
+                <confirmation>0</confirmation>
+                <invoice>0</invoice>
+                <tracking>0</tracking>
+            </sftp_enabled>
+            <sftp>
+                <confirmation>
+                    <cron_expr>0 * * * *</cron_expr>
+                    <delete_after_processing>0</delete_after_processing>
+                </confirmation>
+                <invoice>
+                    <cron_expr>0 * * * *</cron_expr>
+                    <delete_after_processing>0</delete_after_processing>
+                </invoice>
+                <tracking>
+                    <cron_expr>0 * * * *</cron_expr>
+                    <delete_after_processing>0</delete_after_processing>
+                </tracking>
+            </sftp>
+            <integration>
+                <warehouse_id_mapping><![CDATA[EXAMPLE-VALUE,NEW-VALUE]]></warehouse_id_mapping>
+                <notify_email>mguerin@unfi.com,nimesh.koshti@unfi.com,aditya.shah@unfi.com</notify_email>
+            </integration>
+        </unfi_bizconnect>
+    </default>
+</config>

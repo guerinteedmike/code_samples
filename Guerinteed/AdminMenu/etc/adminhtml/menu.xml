@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Guerinteed_AdminMenu::guerinteed"
+             title="Guerinteed"
+             translate="title"
+             module="Guerinteed_AdminMenu"
+             sortOrder="30"
+             resource="Guerinteed_AdminMenu::guerinteed"
+        />
+    </menu>
+</config>

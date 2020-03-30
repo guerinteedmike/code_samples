@@ -1,0 +1,16 @@
+<!--@subject {{trans "Notification of Queue System "}}  @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p><strong>Environment: {{store_url=""}}</strong></p>
+<br>
+<p>{{trans "Valued customer"}},</p>
+<br>
+<p>
+    <strong>Queue system Notification:</strong>
+</p>
+<p>
+    {{var templateVar.body | raw}}
+</p>
+
+{{template config_path="design/email/footer_template"}}

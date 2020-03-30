@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Guerinteed\Slider\Api\Data\SliderGroupInterface"
+                type="Guerinteed\Slider\Model\SliderGroup"/>
+    <preference for="Guerinteed\Slider\Api\Data\SliderGroupSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Guerinteed\Slider\Api\SliderGroupRepositoryInterface"
+                type="Guerinteed\Slider\Model\SliderGroupRepository"/>
+    <virtualType name="Guerinteed\Slider\Model\ResourceModel\SliderGroup\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">guerinteed_slider_group</argument>
+            <argument name="resourceModel" xsi:type="string">Guerinteed\Slider\Model\ResourceModel\SliderGroup</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="slider_slidergroup_listing_data_source" xsi:type="string">Guerinteed\Slider\Model\ResourceModel\SliderGroup\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

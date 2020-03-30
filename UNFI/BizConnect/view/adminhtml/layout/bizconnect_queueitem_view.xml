@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<head>
+    <title>
+        View Queue Item
+    </title>
+</head>
+<body>
+    <referenceContainer name="content">
+        <block class="Magento\Backend\Block\Template" name="bizconnect.queueitem.view" template="UNFI_BizConnect::queueitem/view.phtml">
+            <arguments>
+                <argument name="view_model" xsi:type="object">UNFI\BizConnect\ViewModel\QueueItem\View</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</body>
+</page>

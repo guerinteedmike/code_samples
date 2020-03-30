@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
+    <topic name="magento.inventory.source_stock_management.update" request="UNFI\BizConnect\Model\Topic\Dummy"/>
+    <topic name="magento.logistics.warehouse_management.lines_shipped" request="UNFI\BizConnect\Model\Topic\Dummy"/>
+    <topic name="magento.logistics.warehouse_management.lines_declined" request="UNFI\BizConnect\Model\Topic\Dummy"/>
+
+    <!-- Need to make compatible OnShipmentNotificationSubscriber with BizConnect module -->
+    <topic name="magento.logistics.warehouse_management.request_shipment" request="UNFI\BizConnect\Model\Shipment\Event\Request">
+        <handler name="unfiShipmentNotification" type="UNFI\BizConnect\Handler\OnShipmentNotificationSubscriber" method="onNotified"/>
+    </topic>
+
+    <topic name="magento.sales.order_management.line_cancelled" request="Magento\SalesMessageBus\Model\Sales\Event\LineCancelled">
+        <handler name="lineCancelledHandler" type="UNFI\BizConnect\Handler\OnOrderLineCancelledSubscriber" method="onLineCancelled"/>
+    </topic>
+    <topic name="magento.logistics.fulfillment_management.customer_shipment_done" request="Magento\SalesMessageBus\Model\Logistics\Event\CustomerShipmentDone">
+        <handler name="customerShipmentDoneSubscriber" type="UNFI\BizConnect\Handler\OnCustomerShipmentDoneSubscriber" method="onCustomerShipmentDone"/>
+    </topic>
+    <topic name="magento.common.error_management.notify" request="Magento\CommonMessageBus\Api\Common\Data\Event\NotifyInterface">
+        <handler name="notifyErrorHandler" type="UNFI\BizConnect\Handler\NotifyErrorHandler" method="handle"/>
+    </topic>
+
+</config>

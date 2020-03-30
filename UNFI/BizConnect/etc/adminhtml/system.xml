@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <!-- Add new Tab -->
+        <tab id="bizconnect" translate="label" sortOrder="99999">
+            <label>UNFI</label>
+        </tab>
+        <!-- SECTION:SFTP -->
+        <section id="unfi_bizconnect" translate="label"
+                 type="text" sortOrder="100"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+            <label>Configuration</label>
+            <tab>bizconnect</tab>
+            <resource>UNFI_BizConnect::queueitem_admin</resource>
+            <group id="enable_disable"
+                   translate="label"
+                   type="text"
+                   sortOrder="10"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Enable/Disable Integrations</label>
+                <group id="sftp"
+                       translate="label"
+                       type="text"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>SFTP</label>
+                    <field id="confirmation" translate="label" type="select"
+                           sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Confirmation SFTP</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="invoice" translate="label" type="select"
+                           sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Invoice SFTP</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="tracking" translate="label" type="select"
+                           sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Tracking SFTP</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+                <group id="process"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Processing</label>
+                    <field id="confirmation" translate="label" type="select"
+                           sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Confirmation Processing</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="invoice" translate="label" type="select"
+                           sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Invoice Processing</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="tracking" translate="label" type="select"
+                           sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable Tracking Processing</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+            </group>
+            <group id="sftp"
+                   translate="label"
+                   type="text"
+                   sortOrder="20"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>SFTP Configuration</label>
+                <group id="confirmation"
+                       translate="label"
+                       type="text"
+                       sortOrder="100"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Confirmation</label>
+                    <field id="cron_expr" translate="label comment" sortOrder="2" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cron Expression</label>
+                        <comment>Must be a valid cron expression</comment>
+                    </field>
+                    <field id="host" translate="label" type="text"
+                           sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Host</label>
+                    </field>
+                    <field id="port" translate="label" type="text"
+                           sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Port</label>
+                    </field>
+                    <field id="username" translate="label" type="text"
+                           sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Username</label>
+                    </field>
+                    <field id="password" translate="label" type="password"
+                           sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Password</label>
+                    </field>
+                    <field id="path" translate="label" type="text"
+                           sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP File Path</label>
+                    </field>
+                    <field id="file_name" translate="label" type="text"
+                           sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Filename</label>
+                        <comment>Optional. If not provided will use name based on data provided by MCOM.</comment>
+                    </field>
+                    <field id="timeout" translate="label" type="text"
+                           sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Timeout</label>
+                    </field>
+                    <field id="delete_after_processing" translate="label" type="select"
+                           sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Delete After Processing?</label>
+                        <comment>Should Confirmation Files be Deleted after they are Processed?</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+                <group id="invoice"
+                       translate="label"
+                       type="text"
+                       sortOrder="100"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Invoice</label>
+                    <field id="cron_expr" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cron Expression</label>
+                        <comment>Must be a valid cron expression</comment>
+                    </field>
+                    <field id="host" translate="label" type="text"
+                           sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Host</label>
+                    </field>
+                    <field id="port" translate="label" type="text"
+                           sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Port</label>
+                    </field>
+                    <field id="username" translate="label" type="text"
+                           sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Username</label>
+                    </field>
+                    <field id="password" translate="label" type="password"
+                           sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Password</label>
+                    </field>
+                    <field id="path" translate="label" type="text"
+                           sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP File Path</label>
+                    </field>
+                    <field id="file_name" translate="label" type="text"
+                           sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Filename</label>
+                        <comment>Optional. If not provided will use name based on data provided by MCOM.</comment>
+                    </field>
+                    <field id="timeout" translate="label" type="text"
+                           sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Timeout</label>
+                    </field>
+                    <field id="delete_after_processing" translate="label" type="select"
+                           sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Delete After Processing?</label>
+                        <comment>Should Confirmation Files be Deleted after they are Processed?</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+                <group id="tracking"
+                       translate="label"
+                       type="text"
+                       sortOrder="100"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Tracking</label>
+                    <field id="cron_expr" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cron Expression</label>
+                        <comment>Must be a valid cron expression</comment>
+                    </field>
+                    <field id="host" translate="label" type="text"
+                           sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Host</label>
+                    </field>
+                    <field id="port" translate="label" type="text"
+                           sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Port</label>
+                    </field>
+                    <field id="username" translate="label" type="text"
+                           sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Username</label>
+                    </field>
+                    <field id="password" translate="label" type="password"
+                           sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Password</label>
+                    </field>
+                    <field id="path" translate="label" type="text"
+                           sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP File Path</label>
+                    </field>
+                    <field id="file_name" translate="label" type="text"
+                           sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Filename</label>
+                        <comment>Optional. If not provided will use name based on data provided by MCOM.</comment>
+                    </field>
+                    <field id="timeout" translate="label" type="text"
+                           sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>SFTP Timeout</label>
+                    </field>
+                    <field id="delete_after_processing" translate="label" type="select"
+                           sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Delete After Processing?</label>
+                        <comment>Should Confirmation Files be Deleted after they are Processed?</comment>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                </group>
+            </group>
+            <group id="queue_process"
+                   translate="label"
+                   type="text"
+                   sortOrder="30"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Processing Configuration</label>
+                <field id="amount_to_process" translate="label" type="text"
+                       sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Amount to process</label>
+                    <comment>This is the number of items to be processed at one time</comment>
+                </field>
+                <field id="retry_attempts" translate="label" type="text"
+                       sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Attempts before error</label>
+                    <comment>Tracking - number of attempts before queue is put in error state</comment>
+                </field>
+                <group id="cron"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+                    <label>Cron</label>
+                    <comment>Must be a valid cron expression</comment>
+                    <field id="confirmation" translate="label comment" sortOrder="10" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Confirmation Cron</label>
+                        <comment>Must be a valid cron expression</comment>
+                    </field>
+                    <field id="invoice" translate="label comment" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Invoice Cron</label>
+                        <comment>Must be a valid cron expression</comment>
+                    </field>
+                    <field id="tracking" translate="label comment" sortOrder="2" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Tracking Cron</label>
+                        <comment>Must be a valid cron expression</comment>
+                    </field>
+
+
+
+                </group>
+            </group>
+            <group id="mappings"
+                   translate="label"
+                   type="text"
+                   sortOrder="40"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Mappings Between Systems</label>
+                <!--<field id="order_prefix" translate="label" type="text"
+                       sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Prefix</label>
+                    <comment>Unique to each environment ensuring items process in correct place</comment>
+                </field>-->
+                <field id="shipping_sku" translate="label" type="text"
+                       sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping SKU</label>
+                    <comment>SKU used for shipping charges.</comment>
+                </field>
+                <field id="warehouse_mapping" translate="label" type="textarea"
+                       sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Warehouse ID Mapping</label>
+                </field>
+            </group>
+            <group id="mail_notificaion" 
+                   translate="label"
+                   type="text"
+                   sortOrder="50"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+                <label>Mail Notifications</label>
+
+              <field id="notify_email_bizconnect" translate="label" type="text"
+                       sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                  <label>Notify Email</label>
+                  <comment>Comma separated list of email addresses to send email notifications to in the event of a failure.</comment>
+              </field>
+          </group>
+        </section>
+    </system>
+</config>

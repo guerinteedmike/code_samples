@@ -1,0 +1,160 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">bizconnect_queueitem_listing.bizconnect_queueitem_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New Queue Items</label>
+            </button>
+        </buttons>
+        <spinner>bizconnect_queueitem_listing_columns</spinner>
+        <deps>
+            <dep>bizconnect_queueitem_listing.bizconnect_queueitem_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource component="Magento_Ui/js/grid/provider" name="bizconnect_queueitem_listing_data_source">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">queueitem_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>UNFI_BizConnect::queueitem_view</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="bizconnect_queueitem_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>queueitem_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>false</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="bizconnect_queueitem_listing_columns">
+        <column name="queueitem_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="ready_to_process" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Ready to Process</label>
+            </settings>
+        </column>
+        <column name="has_error" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Processing Error?</label>
+            </settings>
+        </column>
+        <column name="file_name" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">File Name</label>
+            </settings>
+        </column>
+        <column name="message_type" sortOrder="30" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="UNFI\Configs\Model\Config\Source\MessageType"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Message Type</label>
+            </settings>
+        </column>
+        <column name="order_id" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">DB Order ID</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="order_increment_id" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Order Number</label>
+            </settings>
+        </column>
+        <column name="unfi_order_id" sortOrder="60">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">UBS Order ID</label>
+            </settings>
+        </column>
+        <column name="process_attempts" sortOrder="70">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">Process Attempts</label>
+            </settings>
+        </column>
+        <column name="processed_successfully" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="80">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Processed Successfully</label>
+            </settings>
+        </column>
+        <column name="manually_edited" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="90">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Manually Edited</label>
+            </settings>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="100">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Updated</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="110">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="UNFI\BizConnect\Ui\Component\Listing\Column\QueueItemActions">
+            <settings>
+                <indexField>block_id</indexField>
+            </settings>
+        </actionsColumn>
+
+
+        <!--<actionsColumn name="view_order" class="UNFI\Integration\Ui\Component\Listing\Column\ViewOrderAction" sortOrder="120">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">sales/order/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">order_id</item>
+                </item>
+            </argument>
+            <settings>
+                <indexField>magento_order_id</indexField>
+            </settings>
+        </actionsColumn>-->
+    </columns>
+</listing>

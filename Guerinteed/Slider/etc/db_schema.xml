@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="guerinteed_slider_group" resource="default" engine="innodb" comment="Slider Group">
+        <column xsi:type="int" name="group_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Slider Group ID"/>
+        <column xsi:type="varchar" name="title" nullable="true" length="126" comment="Group Title"/>
+        <column xsi:type="mediumtext" name="configuration" nullable="true" comment="Page Content"/>
+
+        <column xsi:type="timestamp" name="created" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Slider Created Time"/>
+        <column xsi:type="timestamp" name="modified" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Last Modified Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="group_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="SLIDER_GROUP_TITLE">
+            <column name="title"/>
+        </constraint>
+    </table>
+    <table name="guerinteed_slider_content" resource="default" engine="innodb" comment="Slider Content">
+        <column xsi:type="int" name="content_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Slider Content ID"/>
+        <column xsi:type="varchar" name="title" nullable="true" length="126" comment="Group Title"/>
+        <column xsi:type="int" name="group_id" padding="10" unsigned="true" nullable="false" identity="false" default="0"
+                comment="Group ID"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Slider Content"/>
+        <column xsi:type="timestamp" name="created" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Slider Created Time"/>
+        <column xsi:type="timestamp" name="modified" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Last Modified Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="content_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="SLIDER_CONTENT_TITLE">
+            <column name="title"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="GUERINTEED_SLIDER_CONTENT_GROUP_ID_GUERINTEED_SLIDER_GROUP_GROUP_ID" table="guerinteed_slider_group"
+                    column="group_id" referenceTable="guerinteed_slider_group" referenceColumn="group_id" onDelete="NO ACTION"/>
+    </table>
+</schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Guerinteed_Slider::guerinteed_slider"
+             title="Slider Widgets" translate="title"
+             module="Guerinteed_Slider"
+             sortOrder="10"
+             parent="Guerinteed_AdminMenu::guerinteed"
+             resource="Guerinteed_Slider::guerinteed_slider"
+        />
+        <add id="Guerinteed_Slider::guerinteed_slider_group"
+             title="Slider Groups"
+             translate="title"
+             module="Guerinteed_Slider"
+             sortOrder="20"
+             parent="Guerinteed_Slider::guerinteed_slider"
+             action="slider/slidergroup/index"
+             resource="Guerinteed_Slider::guerinteed_slider_group"
+        />
+    </menu>
+</config>
